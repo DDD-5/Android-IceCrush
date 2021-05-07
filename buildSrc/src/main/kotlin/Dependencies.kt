@@ -4,13 +4,13 @@ object AppVersion {
     const val appHotfixVersion = 0
     const val appIterationVersion = 0
 
-    const val APPLICATION_VERSION_CODE = AppVersion.appMajorVersion * 1_000_000 +
-            AppVersion.appMinorVersion * 10_000 +
-            AppVersion.appHotfixVersion * 100 +
-            AppVersion.appIterationVersion
+    const val APPLICATION_VERSION_CODE = appMajorVersion * 1_000_000 +
+            appMinorVersion * 10_000 +
+            appHotfixVersion * 100 +
+            appIterationVersion
 
     const val APPLICATION_VERSION_NAME =
-        "${AppVersion.appMajorVersion}.${AppVersion.appMinorVersion}.${AppVersion.appHotfixVersion}"
+        "$appMajorVersion.$appMinorVersion.$appHotfixVersion"
 
 }
 
