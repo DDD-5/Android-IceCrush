@@ -23,7 +23,7 @@ object SdkVersion {
 
 object LibraryVersion {
 
-    const val kotlin = "1.4.30"
+    const val kotlin = "1.4.32"
     const val gradle = "7.0.0-alpha15"
 
     //androidX
@@ -35,7 +35,7 @@ object LibraryVersion {
     const val material = "1.3.0"
 
     //compose
-    const val compose = "1.0.0-beta01"
+    const val compose = "1.0.0-beta05"
     const val composeActivity = "1.3.0-alpha07"
 
     //image
@@ -84,6 +84,7 @@ object Library {
     const val composeRxJava = "androidx.compose.runtime:runtime-rxjava2:${LibraryVersion.compose}"
     const val composeActivity = "androidx.activity:activity-compose:${LibraryVersion.composeActivity}"
     const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+    const val composeNavigation = "androidx.navigation:navigation-compose:1.0.0-alpha10"
     const val composeHiltNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
 
     //ui

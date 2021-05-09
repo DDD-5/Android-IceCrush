@@ -53,6 +53,7 @@ fun Project.compose() {
         implementation(Library.composeActivity)
         implementation(Library.composeMaterial)
         implementation(Library.composeViewModel)
+        implementation(Library.composeNavigation)
         implementation(Library.composeHiltNavigation)
     }
 }
@@ -94,9 +95,5 @@ fun Project.di() {
 
 
 fun Project.test() {
-    dependencies {
-        testImplementation(Library.junit)
-        androidTestImplementation(Library.espresso)
-        androidTestImplementation(Library.junitExt)
-    }
+
 }
