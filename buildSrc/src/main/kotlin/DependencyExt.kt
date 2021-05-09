@@ -53,6 +53,7 @@ fun Project.compose() {
         implementation(Library.composeActivity)
         implementation(Library.composeMaterial)
         implementation(Library.composeViewModel)
+        implementation(Library.composeHiltNavigation)
     }
 }
 

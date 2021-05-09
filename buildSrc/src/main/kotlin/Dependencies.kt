@@ -84,6 +84,7 @@ object Library {
     const val composeRxJava = "androidx.compose.runtime:runtime-rxjava2:${LibraryVersion.compose}"
     const val composeActivity = "androidx.activity:activity-compose:${LibraryVersion.composeActivity}"
     const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
+    const val composeHiltNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
 
     //ui
     const val material = "com.google.android.material:material:${LibraryVersion.material}"
