@@ -6,7 +6,7 @@ CompileSDK 30
 
 TargetSDK 30
 
-kotlin : 1.4.30
+kotlin : 1.4.32
 
 gradle : 7.0
 
