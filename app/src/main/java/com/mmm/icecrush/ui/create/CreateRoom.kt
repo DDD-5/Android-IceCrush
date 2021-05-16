@@ -2,6 +2,11 @@ package com.mmm.icecrush.ui.create
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.InteractionSource
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,29 +18,28 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.HorizontalAlignmentLine
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.mmm.icecrush.R
-import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Blue
 import com.mmm.icecrush.ui.theme.Green
 import com.mmm.icecrush.ui.theme.Pink
+import com.mmm.icecrush.ui.theme.White
 
 
 @Composable
 fun CreateRoom(navController: NavController) {
+    val ripple = rememberRipple(false, 12.dp, White)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -45,7 +49,14 @@ fun CreateRoom(navController: NavController) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_back),
                             contentDescription = "뒤로가기",
-                            modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
+                            modifier = Modifier
+                                .padding(16.dp, 0.dp, 0.dp, 0.dp)
+                                .clickable(
+                                    interactionSource = remember{ MutableInteractionSource()},
+                                    indication = rememberRipple(true, 12.dp, White)
+                                ) {
+                                    navController.popBackStack()
+                                }
                         )
 
                         Column(
