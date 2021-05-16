@@ -64,7 +64,6 @@ fun CreateRoom(navController: NavController) {
             )
         },
         content = {
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth(1f)
@@ -116,7 +115,7 @@ fun CreateRoom(navController: NavController) {
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_bubble),
-                        contentDescription = "더 친해지고 싶어",
+                        contentDescription = "더 친해지고 싶어요",
                         modifier = Modifier.padding(0.dp, 56.dp, 28.dp, 56.dp)
                     )
                 }
