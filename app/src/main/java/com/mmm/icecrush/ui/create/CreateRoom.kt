@@ -17,11 +17,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.theme.Black
@@ -31,23 +35,31 @@ import com.mmm.icecrush.ui.theme.Pink
 
 
 @Composable
-fun CreateRoom() {
+fun CreateRoom(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
                 elevation = 0.dp,
                 content = {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_back),
-                        contentDescription = "뒤로가기",
-                        modifier = Modifier.padding(23.dp, 0.dp, 0.dp, 0.dp)
-                    )
-                    Text(
-                        text = "단계 선택",
-                        style = MaterialTheme.typography.subtitle2,
-                        textAlign = TextAlign.Center,
-                        color = Black,
-                    )
+                    Box {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_back),
+                            contentDescription = "뒤로가기",
+                            modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
+                        )
+
+                        Column(
+                            modifier = Modifier.fillMaxWidth(1f),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "단계 선택",
+                                style = MaterialTheme.typography.subtitle2,
+                                textAlign = TextAlign.Center,
+                                color = Black
+                            )
+                        }
+                    }
                 }
             )
         },
@@ -116,7 +128,7 @@ fun CreateRoom() {
 @Composable
 @Preview("create")
 fun CreateRoomPreview() {
-    CreateRoom()
+    CreateRoom(rememberNavController())
 }
 
 

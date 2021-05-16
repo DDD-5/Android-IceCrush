@@ -18,9 +18,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             IceCrushTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "create") {
-                    composable("lobby") { Lobby() }
-                    composable("create") { CreateRoom() }
+                NavHost(navController = navController, startDestination = "lobby") {
+                    composable("lobby") { Lobby(navController) }
+                    composable("create") { CreateRoom(navController) }
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.mmm.icecrush.ui.lobby
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Blue
 import com.mmm.icecrush.ui.theme.Red
@@ -24,8 +28,8 @@ import com.mmm.icecrush.ui.theme.Yellow
 
 
 @Composable
-fun Lobby() {
-    
+fun Lobby(navController: NavController) {
+
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -59,7 +63,10 @@ fun Lobby() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Red)
-                .weight(2f),
+                .weight(2f)
+                .clickable {
+                    navController.navigate("create")
+                },
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -104,6 +111,6 @@ fun Lobby() {
 @Composable
 @Preview("lobby")
 fun LobbyPreview() {
-    Lobby()
+    Lobby(rememberNavController())
 }
 
