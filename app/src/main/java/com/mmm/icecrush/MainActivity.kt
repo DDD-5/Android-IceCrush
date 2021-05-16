@@ -3,12 +3,11 @@ package com.mmm.icecrush
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.mmm.icecrush.ui.create.CreateRoom
+import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.theme.IceCrushTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +17,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             IceCrushTheme {
-                Lobby()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "create") {
+                    composable("lobby") { Lobby() }
+                    composable("create") { CreateRoom() }
+                }
             }
         }
     }
