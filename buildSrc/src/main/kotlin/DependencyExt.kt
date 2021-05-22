@@ -24,6 +24,7 @@ fun Project.androidX() {
 fun Project.ui() {
     dependencies {
         implementation(Library.material)
+        implementation(Library.insets)
     }
 }
 

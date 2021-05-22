@@ -33,6 +33,7 @@ object LibraryVersion {
 
     //ui
     const val material = "1.3.0"
+    const val insets = "0.9.1"
 
     //compose
     const val compose = "1.0.0-beta05"
@@ -89,6 +90,7 @@ object Library {
 
     //ui
     const val material = "com.google.android.material:material:${LibraryVersion.material}"
+    const val insets = "com.google.accompanist:accompanist-insets:${LibraryVersion.insets}"
 
     //image
     const val glide = "com.github.bumptech.glide:glide:${LibraryVersion.glide}"
