@@ -55,7 +55,7 @@ fun CreateRoom(navController: NavController) {
                                 .padding(16.dp, 0.dp, 0.dp, 0.dp)
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
-                                    indication = rememberRipple(true, 12.dp, White)
+                                    indication = rememberRipple(false, 24.dp, White)
                                 ) {
                                     navController.popBackStack()
                                 }

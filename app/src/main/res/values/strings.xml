@@ -24,4 +24,5 @@
     <string name="leave_room">방 나가기</string>
     <string name="go_back">뒤로가기</string>
     <string name="current_user_count">현재 유저 수 %s</string>
+    <string name="start">시작하기</string>
 </resources>

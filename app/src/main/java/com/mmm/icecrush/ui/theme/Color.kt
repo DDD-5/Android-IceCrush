@@ -14,3 +14,5 @@ val Pink = Color(0xFFFFB7E3)
 val Green = Color(0xFF2EDA87)
 val Black = Color(0xFF000000)
 val White = Color(0xFFFFFFFF)
+
+val Disable = Color(0xFF868686)

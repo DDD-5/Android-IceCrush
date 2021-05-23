@@ -3,9 +3,11 @@ package com.mmm.icecrush.ui.wait
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -13,29 +15,40 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.insets.navigationBarsPadding
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
+import com.mmm.icecrush.ui.theme.Black
+import com.mmm.icecrush.ui.theme.Disable
 import com.mmm.icecrush.ui.theme.Green
 import com.mmm.icecrush.ui.theme.Pink
 import com.mmm.icecrush.ui.theme.Red
@@ -58,11 +71,23 @@ fun WaitRoom(navController: NavController, list: List<String>) {
                     ) {
                         Image(
                             painter = painterResource(R.drawable.ic_close),
-                            contentDescription = stringResource(id = R.string.leave_room)
+                            contentDescription = stringResource(id = R.string.leave_room),
+                            modifier = Modifier.clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(false, 24.dp, White)
+                            ) {
+                                navController.popBackStack()
+                            }
                         )
                         Image(
                             painter = painterResource(R.drawable.ic_share),
                             contentDescription = stringResource(id = R.string.share),
+                            modifier = Modifier.clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(false, 24.dp, White)
+                            ) {
+
+                            }
                         )
                     }
                 },
@@ -71,72 +96,99 @@ fun WaitRoom(navController: NavController, list: List<String>) {
 
         },
         content = {
-            Column {
-                Box(
+            ConstraintLayout(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .navigationBarsPadding()
+            ) {
+
+                val (title, userCount, grid, button) = createRefs()
+
+                Text(
+                    style = MaterialTheme.typography.h1,
+                    text = stringResource(id = R.string.room_wait_title),
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
+                        .wrapContentHeight()
                         .background(Red)
-                        .padding(0.dp, 16.dp, 0.dp, 71.dp)
-                ) {
-                    Text(
-                        style = MaterialTheme.typography.h1,
-                        text = stringResource(id = R.string.room_wait_title),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                }
-
-                Box(
-                    modifier = Modifier
-                        .height(64.dp)
-                        .fillMaxWidth()
-                ) {
-                    Column {
-                        Box(
-                            modifier = Modifier
-                                .background(Red)
-                                .fillMaxWidth(1f)
-                                .height(32.dp)
-                        )
-                        Box(
-                            modifier = Modifier
-                                .background(Pink)
-                                .fillMaxWidth(1f)
-                                .height(32.dp)
-                        )
-                    }
-                    Card(
-                        shape = RoundedCornerShape(30.dp),
-                        backgroundColor = Green,
-                        modifier = Modifier
-                            .height(64.dp)
-                            .width(104.dp)
-                            .align(Alignment.Center),
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Image(
-                                painter = painterResource(R.drawable.ic_profile),
-                                contentDescription = stringResource(id = R.string.current_user_count,1)
-                            )
-                            Text(text = "1", style = MaterialTheme.typography.body2)
+                        .padding(69.dp, 16.dp, 69.dp, 71.dp)
+                        .constrainAs(title) {
+                            top.linkTo(parent.top)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                            width = Dimension.fillToConstraints
                         }
+                )
 
-                    }
-
-                }
                 LazyVerticalGrid(
                     cells = GridCells.Fixed(2),
                     modifier = Modifier
+                        .constrainAs(grid) {
+                            top.linkTo(title.bottom)
+                            bottom.linkTo(button.top)
+                            height = Dimension.fillToConstraints
+                        }
                         .background(Pink)
-                        .fillMaxHeight()
+                        .clipToBounds(),
+                    contentPadding = PaddingValues(0.dp, 64.dp, 0.dp, 0.dp)
                 ) {
                     items(list.size) { index ->
                         UserProfile(false, index)
                     }
+                }
 
+                Button(
+                    onClick = {
+
+                    },
+                    colors = buttonColors(
+                        backgroundColor = Black,
+                        disabledBackgroundColor = Black,
+                        contentColor = White,
+                        disabledContentColor = Disable
+                    ),
+                    modifier = Modifier
+                        .constrainAs(button) {
+                            bottom.linkTo(parent.bottom)
+                        }
+                        .fillMaxWidth()
+                        .height(68.dp),
+                    content = {
+                        Text(
+                            text = stringResource(id = R.string.start),
+                            style = MaterialTheme.typography.body2
+                        )
+                    },
+                    shape = RoundedCornerShape(0)
+                )
+
+                Card(
+                    shape = RoundedCornerShape(30.dp),
+                    backgroundColor = Green,
+                    modifier = Modifier
+                        .constrainAs(userCount) {
+                            top.linkTo(title.bottom)
+                            bottom.linkTo(grid.top)
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
+                        .height(64.dp)
+                        .width(104.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.ic_profile),
+                            contentDescription = stringResource(
+                                id = R.string.current_user_count,
+                                1
+                            )
+                        )
+                        Text(text = "1", style = MaterialTheme.typography.body2)
+                    }
                 }
             }
         }
