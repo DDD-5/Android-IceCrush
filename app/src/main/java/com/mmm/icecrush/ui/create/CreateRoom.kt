@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
@@ -97,7 +98,10 @@ fun CreateRoom(navController: NavController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .background(Green),
+                        .background(Green)
+                        .clickable {
+                            navController.navigate("invite")
+                        },
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
