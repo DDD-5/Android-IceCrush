@@ -56,6 +56,7 @@ fun Project.compose() {
         implementation(Library.composeViewModel)
         implementation(Library.composeNavigation)
         implementation(Library.composeHiltNavigation)
+        implementation(Library.composeConstraintlayout)
     }
 }
 

@@ -87,6 +87,7 @@ object Library {
     const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha02"
     const val composeNavigation = "androidx.navigation:navigation-compose:1.0.0-alpha10"
     const val composeHiltNavigation = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
+    const val composeConstraintlayout = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
 
     //ui
     const val material = "com.google.android.material:material:${LibraryVersion.material}"
