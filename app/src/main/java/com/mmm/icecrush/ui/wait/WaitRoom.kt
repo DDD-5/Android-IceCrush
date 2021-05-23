@@ -3,6 +3,7 @@ package com.mmm.icecrush.ui.wait
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -134,7 +136,7 @@ fun WaitRoom(navController: NavController, list: List<String>) {
                     contentPadding = PaddingValues(0.dp, 64.dp, 0.dp, 0.dp)
                 ) {
                     items(list.size) { index ->
-                        UserProfile(false, index)
+                        UserProfile(true, index)
                     }
                 }
 
@@ -212,6 +214,11 @@ fun UserProfile(isOwner: Boolean, index: Int) {
                 .alpha(0.5f)
                 .fillMaxWidth()
                 .aspectRatio(1f)
+                .border(
+                    width = if (isOwner) 3.dp else 0.dp,
+                    color = Red,
+                    shape = CircleShape
+                )
         )
         Text(
             text = "비타코코",
