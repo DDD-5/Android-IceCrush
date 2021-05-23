@@ -1,21 +1,26 @@
 package com.mmm.icecrush.ui.invite
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Pink
@@ -29,6 +34,11 @@ fun Invitation(
 ) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+    val systemUiController = rememberSystemUiController()
+
+    SideEffect {
+        systemUiController.setStatusBarColor(Red)
+    }
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -50,6 +60,7 @@ fun Invitation(
             )
             Text(
                 text = stringResource(id = R.string.invitation_title),
+                lineHeight = 20.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .constrainAs(title) {
@@ -78,24 +89,23 @@ fun Invitation(
                     style = MaterialTheme.typography.caption
                 )
             }
-            Button(
-                onClick = {  },
+            Box(
                 modifier = Modifier
+                    .clickable {
+
+                    }
                     .constrainAs(confirmButton) {
                         bottom.linkTo(parent.bottom)
-                        centerHorizontallyTo(parent)
                     }
-                    .fillMaxWidth(),
-                colors = ButtonDefaults
-                    .buttonColors(
-                        backgroundColor = Black,
-                        contentColor = White
-                    ),
-                contentPadding = PaddingValues(top = 24.dp, bottom = 24.dp)
+                    .fillMaxWidth()
+                    .background(Black)
+                    .padding(vertical = 24.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = stringResource(id = R.string.invitation_confirm),
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.body2,
+                    color = White,
                 )
             }
         }
@@ -111,7 +121,8 @@ private fun InvitationAppBar(
             Text(
                 modifier = Modifier.padding(start = 109.dp),
                 text = stringResource(id = R.string.invitation),
-                style = MaterialTheme.typography.subtitle2
+                style = MaterialTheme.typography.subtitle2,
+                color = Black
             )
         },
         navigationIcon = {
