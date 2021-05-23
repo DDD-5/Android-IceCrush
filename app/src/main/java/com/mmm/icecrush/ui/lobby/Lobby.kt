@@ -82,7 +82,7 @@ fun Lobby(navController: NavController) {
                         .background(Red)
                         .weight(1f)
                         .clickable {
-                            navController.navigate(Destinations.Lobby)
+                            navController.navigate(Destinations.CreateRoom)
                         },
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
