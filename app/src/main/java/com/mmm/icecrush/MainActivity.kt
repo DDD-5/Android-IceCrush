@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Destinations.WaitRoom,
+                        startDestination = Destinations.Lobby2,
                         modifier = Modifier.statusBarsPadding()
                     ) {
                         composable(Destinations.Lobby) { Lobby(navController) }
