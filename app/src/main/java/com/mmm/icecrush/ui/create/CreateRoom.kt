@@ -24,11 +24,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Blue
@@ -39,7 +41,6 @@ import com.mmm.icecrush.ui.theme.White
 
 @Composable
 fun CreateRoom(navController: NavController) {
-    val ripple = rememberRipple(false, 12.dp, White)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -48,11 +49,11 @@ fun CreateRoom(navController: NavController) {
                     Box {
                         Image(
                             painter = painterResource(id = R.drawable.ic_back),
-                            contentDescription = "뒤로가기",
+                            contentDescription = stringResource(id = R.string.share),
                             modifier = Modifier
                                 .padding(16.dp, 0.dp, 0.dp, 0.dp)
                                 .clickable(
-                                    interactionSource = remember{ MutableInteractionSource()},
+                                    interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(true, 12.dp, White)
                                 ) {
                                     navController.popBackStack()
@@ -64,7 +65,7 @@ fun CreateRoom(navController: NavController) {
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                text = "단계 선택",
+                                text = stringResource(id = R.string.select_type),
                                 style = MaterialTheme.typography.subtitle2,
                                 textAlign = TextAlign.Center,
                                 color = Black
@@ -87,7 +88,7 @@ fun CreateRoom(navController: NavController) {
                         .padding(57.dp, 40.dp, 57.dp, 46.dp)
                 ) {
                     Text(
-                        text = "How Close are you?",
+                        text = stringResource(id = R.string.select_type_title),
                         style = MaterialTheme.typography.h1,
                         textAlign = TextAlign.Center
                     )
@@ -101,13 +102,13 @@ fun CreateRoom(navController: NavController) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "오늘 처음 만났어요",
+                        text = stringResource(id = R.string.met_first_today),
                         style = MaterialTheme.typography.body2,
                         modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_highfive),
-                        contentDescription = "오늘 처음 만났어요",
+                        contentDescription = stringResource(id = R.string.met_first_today),
                         modifier = Modifier.padding(0.dp, 56.dp, 28.dp, 56.dp)
                     )
                 }
@@ -120,13 +121,13 @@ fun CreateRoom(navController: NavController) {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "더 친해지고 싶어요",
+                        text = stringResource(id = R.string.want_close),
                         style = MaterialTheme.typography.body2,
                         modifier = Modifier.padding(30.dp, 0.dp, 0.dp, 0.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_bubble),
-                        contentDescription = "더 친해지고 싶어요",
+                        contentDescription = stringResource(id = R.string.want_close),
                         modifier = Modifier.padding(0.dp, 56.dp, 28.dp, 56.dp)
                     )
                 }
@@ -136,7 +137,7 @@ fun CreateRoom(navController: NavController) {
 }
 
 @Composable
-@Preview("create")
+@Preview(Destinations.CreateRoom)
 fun CreateRoomPreview() {
     CreateRoom(rememberNavController())
 }
