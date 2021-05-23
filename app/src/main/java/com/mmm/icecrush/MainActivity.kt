@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.statusBarsPadding
 import com.mmm.icecrush.ui.create.CreateRoom
+import com.mmm.icecrush.ui.invite.Invitation
 import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.theme.IceCrushTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +32,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable("lobby") { Lobby(navController) }
                         composable("create") { CreateRoom(navController) }
+                        composable("invite"){ Invitation(navController) }
                     }
                 }
             }

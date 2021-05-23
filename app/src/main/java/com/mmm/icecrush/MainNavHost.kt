@@ -19,6 +19,10 @@ fun MainNavHost() {
         composable(Destinations.SelectRoomType){
 
         }
+
+        composable(Destinations.Invitation){
+
+        }
     }
 
 
