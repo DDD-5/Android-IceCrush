@@ -18,12 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Blue
@@ -44,7 +46,7 @@ fun Lobby(navController: NavController) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Ice Crush",
+                            text = stringResource(id = R.string.lobby_title),
                             style = MaterialTheme.typography.subtitle1,
                             textAlign = TextAlign.Center,
                             color = Black
@@ -67,7 +69,7 @@ fun Lobby(navController: NavController) {
                         .padding(57.dp, 40.dp, 57.dp, 46.dp)
                 ) {
                     Text(
-                        text = "Let's break some ice!",
+                        text = stringResource(id = R.string.lobby_sub_title),
                         style = MaterialTheme.typography.h1,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
@@ -80,20 +82,20 @@ fun Lobby(navController: NavController) {
                         .background(Red)
                         .weight(1f)
                         .clickable {
-                            navController.navigate("create")
+                            navController.navigate(Destinations.Lobby)
                         },
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "방 열기",
+                        text = stringResource(id = R.string.create_room),
                         style = MaterialTheme.typography.body1,
                         textAlign = TextAlign.Start,
                         modifier = Modifier.padding(26.dp, 0.dp, 0.dp, 0.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_go),
-                        contentDescription = "방 열기",
+                        contentDescription = stringResource(id = R.string.create_room),
                         alignment = Alignment.CenterEnd,
                         modifier = Modifier.padding(0.dp, 0.dp, 26.dp, 0.dp)
                     )
@@ -108,14 +110,14 @@ fun Lobby(navController: NavController) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "방 들어가기",
+                        text = stringResource(id = R.string.enter_room),
                         style = MaterialTheme.typography.body1,
                         textAlign = TextAlign.Start,
                         modifier = Modifier.padding(26.dp, 0.dp, 0.dp, 0.dp)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_go),
-                        contentDescription = "방 열기",
+                        contentDescription = stringResource(id = R.string.enter_room),
                         alignment = Alignment.CenterEnd,
                         modifier = Modifier.padding(0.dp, 0.dp, 26.dp, 0.dp)
                     )
@@ -128,7 +130,7 @@ fun Lobby(navController: NavController) {
 }
 
 @Composable
-@Preview("lobby")
+@Preview(Destinations.Lobby)
 fun LobbyPreview() {
     Lobby(rememberNavController())
 }

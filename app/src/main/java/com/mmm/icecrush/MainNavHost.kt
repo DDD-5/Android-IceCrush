@@ -16,7 +16,7 @@ fun MainNavHost() {
 
         }
 
-        composable(Destinations.SelectRoomType){
+        composable(Destinations.CreateRoom){
 
         }
 

@@ -4,4 +4,24 @@
     <string name="invitation_title">방이 만들어졌습니다!\n함께할 사람들을 초대해보세요.</string>
     <string name="invitation_confirm">확인</string>
     <string name="invitation_share">링크 공유하기</string>
+
+    <string name="select_type">단계 선택</string>
+
+    <!-- lobby   -->
+    <string name="lobby_title">Ice Crush</string>
+    <string name="lobby_sub_title">Let\'s break some ice!</string>
+    <string name="create_room">방 열가</string>
+    <string name="enter_room">방 들어가기</string>
+
+    <!--  create room  -->
+    <string name="select_type_title">How Close are you?</string>
+    <string name="met_first_today">오늘 처음만났어요.</string>
+    <string name="want_close">더 친해지고 싶어요</string>
+    
+    <!-- wait room -->
+    <string name="room_wait_title">waiting…</string>
+    <string name="share">공유하가</string>
+    <string name="leave_room">방 나가기</string>
+    <string name="go_back">뒤로가기</string>
+    <string name="current_user_count">현재 유저 수 %s</string>
 </resources>
