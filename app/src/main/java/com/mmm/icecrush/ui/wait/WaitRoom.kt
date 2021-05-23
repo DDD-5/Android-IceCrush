@@ -30,13 +30,13 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -47,6 +47,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
@@ -59,6 +60,13 @@ import com.mmm.icecrush.ui.theme.White
 @ExperimentalFoundationApi
 @Composable
 fun WaitRoom(navController: NavController, list: List<String>) {
+
+    val systemUiController = rememberSystemUiController()
+
+    SideEffect {
+        systemUiController.setStatusBarColor(Red)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -231,6 +239,6 @@ fun UserProfile(isOwner: Boolean, index: Int) {
 @ExperimentalFoundationApi
 @Composable
 @Preview(Destinations.WaitRoom)
-fun RoomPreview() {
+fun WaitRoomPreview() {
     WaitRoom(rememberNavController(), listOf("1", "2", "3"))
 }
