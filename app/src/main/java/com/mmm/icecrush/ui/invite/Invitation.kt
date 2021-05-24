@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Pink
@@ -34,11 +32,6 @@ fun Invitation(
 ) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-    val systemUiController = rememberSystemUiController()
-
-    SideEffect {
-        systemUiController.setStatusBarColor(Red)
-    }
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -59,7 +52,7 @@ fun Invitation(
                     }
             )
             Text(
-                text = stringResource(id = R.string.invitation_title),
+                text = stringResource(id = R.string.invite_message),
                 lineHeight = 20.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -85,7 +78,7 @@ fun Invitation(
                 contentPadding = PaddingValues(start = 20.dp, top = 13.dp, end = 20.dp, bottom = 13.dp)
             ) {
                 Text(
-                    text = stringResource(id = R.string.invitation_share),
+                    text = stringResource(id = R.string.invite_share),
                     style = MaterialTheme.typography.caption
                 )
             }
@@ -103,7 +96,7 @@ fun Invitation(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = stringResource(id = R.string.invitation_confirm),
+                    text = stringResource(id = R.string.invite_confirm),
                     style = MaterialTheme.typography.body2,
                     color = White,
                 )
@@ -120,7 +113,7 @@ private fun InvitationAppBar(
         title = {
             Text(
                 modifier = Modifier.padding(start = 109.dp),
-                text = stringResource(id = R.string.invitation),
+                text = stringResource(id = R.string.invite_title),
                 style = MaterialTheme.typography.subtitle2,
                 color = Black
             )
