@@ -23,6 +23,10 @@ fun MainNavHost() {
         composable(Destinations.Invitation){
 
         }
+
+        composable(Destinations.MakeNickname){
+
+        }
     }
 
 

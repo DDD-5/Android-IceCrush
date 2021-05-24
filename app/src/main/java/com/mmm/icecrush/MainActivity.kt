@@ -14,6 +14,7 @@ import com.google.accompanist.insets.statusBarsPadding
 import com.mmm.icecrush.ui.create.CreateRoom
 import com.mmm.icecrush.ui.invite.Invitation
 import com.mmm.icecrush.ui.lobby.Lobby
+import com.mmm.icecrush.ui.makenickname.MakeNickname
 import com.mmm.icecrush.ui.wait.WaitRoom
 import com.mmm.icecrush.ui.theme.IceCrushTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,9 +38,11 @@ class MainActivity : ComponentActivity() {
                         composable(Destinations.CreateRoom) { CreateRoom(navController) }
                         composable(Destinations.WaitRoom) { WaitRoom(navController = navController, list = listOf("1","2"))}
                         composable(Destinations.Invitation){ Invitation(navController) }
+                        composable(Destinations.MakeNickname){ MakeNickname(navController = navController)}
                     }
                 }
             }
+//            AppContent()
         }
     }
 }
