@@ -18,7 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
 import com.mmm.icecrush.ui.theme.Pink
@@ -85,7 +87,7 @@ fun Invitation(
             Box(
                 modifier = Modifier
                     .clickable {
-
+                        navController.navigate(Destinations.MakeNickname)
                     }
                     .constrainAs(confirmButton) {
                         bottom.linkTo(parent.bottom)
