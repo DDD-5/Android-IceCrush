@@ -2,11 +2,13 @@ package com.mmm.icecrush.ui.makenickname
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,7 +42,10 @@ fun MakeNickname(navController: NavController){
                         painter = painterResource(id = R.drawable.ic_back),
                         contentDescription = stringResource(id = R.string.nickname_make_go_back),
                         modifier = Modifier
-                            .clickable {
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(false, 24.dp, White)
+                            ) {
                                 navController.popBackStack()
                             }
                             .constrainAs(navIcon) {
@@ -64,7 +69,10 @@ fun MakeNickname(navController: NavController){
                                 end.linkTo(parent.end, 16.dp)
                                 centerVerticallyTo(parent)
                             }
-                            .clickable {
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(false, 24.dp, White)
+                            ) {
                                 navController.navigate(Destinations.WaitRoom)
                             }
                     )
@@ -79,11 +87,11 @@ fun MakeNickname(navController: NavController){
                 .padding(horizontal = 16.dp)
         ) {
             val textState = remember { mutableStateOf("") }
-
             val (tilNickname, textHelper) = createRefs()
+            val isValid = textState.value.count() <= 6
             TextField(
                 value = textState.value,
-                onValueChange = { textState.value = it },
+                onValueChange = { if(it.trim().length <= 6) textState.value = it.trim() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .constrainAs(tilNickname) {
@@ -92,17 +100,19 @@ fun MakeNickname(navController: NavController){
                         top.linkTo(parent.top, 48.dp)
                     },
                 singleLine = true,
-                textStyle = TextStyle(color = White),
+                textStyle = MaterialTheme.typography.body2,
                 shape = MaterialTheme.shapes.small.copy(ZeroCornerSize),
                 colors = TextFieldDefaults.textFieldColors(
+                    textColor = White,
+                    cursorColor = White,
                     backgroundColor = Color.Transparent,
                     focusedIndicatorColor = White,
-                    unfocusedIndicatorColor = White
+                    unfocusedIndicatorColor = White,
+                    placeholderColor = SkyBlue
                 ),
                 placeholder = {
                     Text(
                         text = stringResource(id = R.string.nickname_make_hint),
-                        color = SkyBlue,
                         style = MaterialTheme.typography.body2
                     )
                 }
@@ -112,7 +122,7 @@ fun MakeNickname(navController: NavController){
                     top.linkTo(tilNickname.bottom, 16.dp)
                     end.linkTo(tilNickname.end)
                 },
-                text = "${textState.value.length}/6",
+                text = if(isValid) "${textState.value.count()}/6" else "6/6" ,
                 color = White,
                 style = MaterialTheme.typography.subtitle2
             )
