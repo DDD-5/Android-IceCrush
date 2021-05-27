@@ -15,3 +15,5 @@ val Green = Color(0xFF2EDA87)
 val Black = Color(0xFF000000)
 val White = Color(0xFFFFFFFF)
 val SkyBlue = Color(0xFF93A8FF)
+
+val Disable = Color(0xFF868686)

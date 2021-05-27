@@ -32,4 +32,6 @@
     <string name="nickname_make_confirm">완료</string>
     <string name="nickname_make_go_back">뒤로가기</string>
     <string name="nickname_make_hint">닉네임을 입력해주세요.</string>
+
+    <string name="start">시작하기</string>
 </resources>
