@@ -6,7 +6,7 @@
     <!-- lobby   -->
     <string name="lobby_title">Ice Crush</string>
     <string name="lobby_sub_title">Let\'s break some ice!</string>
-    <string name="create_room">방 열가</string>
+    <string name="create_room">방 열기</string>
     <string name="enter_room">방 들어가기</string>
 
     <!--  create room  -->
@@ -35,5 +35,10 @@
 
     <string name="start">시작하기</string>
 
+
+    <!--  room  -->
+    <string name="speaker">speaker</string>
     <string name="exit">나가기</string>
+    <string name="skip">이번 질문 스킵</string>
+    <string name="complete_response">대답 완료</string>
 </resources>
