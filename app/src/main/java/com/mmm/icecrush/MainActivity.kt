@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
                         composable(Destinations.Invitation){ Invitation(navController) }
                         composable(Destinations.CreateRoom) { CreateRoom(navController) }
                         composable(Destinations.WaitRoom) { WaitRoom(navController = navController, list = listOf("1","2"))}
-                        composable(Destinations.Invitation){ Invitation(navController) }
                         composable(Destinations.MakeNickname){ MakeNickname(navController = navController)}
                         composable(Destinations.Room){ Room(navController) }
                     }

@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.navigationBarsPadding
+import com.mmm.icecrush.AppContent
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
@@ -36,7 +37,7 @@ fun Invitation(
 ) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-
+    AppContent(navController)
     Scaffold(
         modifier = Modifier.navigationBarsPadding(),
         scaffoldState = scaffoldState,

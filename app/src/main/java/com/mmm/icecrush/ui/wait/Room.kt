@@ -27,13 +27,14 @@ import androidx.navigation.compose.navigate
 import androidx.navigation.compose.popUpTo
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.navigationBarsPadding
+import com.mmm.icecrush.AppContent
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.*
 
 @Composable
 fun Room(navController: NavController) {
-
+    AppContent(navController)
     Scaffold(
         topBar = {
             TopAppBar(

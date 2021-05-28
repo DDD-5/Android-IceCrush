@@ -23,12 +23,14 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.mmm.icecrush.AppContent
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.*
 
 @Composable
 fun MakeNickname(navController: NavController){
+    AppContent(navController)
     Scaffold(
         topBar = {
             TopAppBar(
