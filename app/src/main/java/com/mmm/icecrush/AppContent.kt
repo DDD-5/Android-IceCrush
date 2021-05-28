@@ -18,7 +18,7 @@ fun AppContent(navController: NavController) {
             color = when (navController.currentDestination?.arguments?.get(KEY_ROUTE)?.defaultValue
                 ?: "") {
                 Destinations.Lobby, Destinations.CreateRoom, Destinations.MakeNickname -> Blue
-                Destinations.Invitation, Destinations.Room, Destinations.WaitRoom -> Red
+                Destinations.Invitation, Destinations.Room, Destinations.WaitRoom, Destinations.Finish -> Red
                 else -> Blue
             }
         )
