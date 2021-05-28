@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -29,7 +28,10 @@ import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.*
 
 @Composable
-fun MakeNickname(navController: NavController){
+fun MakeNickname(
+    navController: NavController
+){
+    val nicknameState = remember { mutableStateOf("") }
     AppContent(navController)
     Scaffold(
         topBar = {
@@ -73,10 +75,12 @@ fun MakeNickname(navController: NavController){
                             }
                             .clickable(
                                 interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(false, 24.dp, White)
+                                indication = rememberRipple(false, 24.dp, White),
+                                enabled = nicknameState.value.isNotEmpty()
                             ) {
                                 navController.navigate(Destinations.WaitRoom)
-                            }
+                            },
+                        color = if(nicknameState.value.isNotEmpty()) Black else SkyBlue
                     )
                 }
             }
@@ -88,12 +92,11 @@ fun MakeNickname(navController: NavController){
                 .fillMaxSize()
                 .padding(horizontal = 16.dp)
         ) {
-            val textState = remember { mutableStateOf("") }
             val (tilNickname, textHelper) = createRefs()
-            val isValid = textState.value.count() <= 6
+            val isValid = nicknameState.value.count() <= 6
             TextField(
-                value = textState.value,
-                onValueChange = { if(it.trim().length <= 6) textState.value = it.trim() },
+                value = nicknameState.value,
+                onValueChange = { if(it.trim().length <= 6) nicknameState.value = it.trim() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .constrainAs(tilNickname) {
@@ -124,25 +127,12 @@ fun MakeNickname(navController: NavController){
                     top.linkTo(tilNickname.bottom, 16.dp)
                     end.linkTo(tilNickname.end)
                 },
-                text = if(isValid) "${textState.value.count()}/6" else "6/6" ,
+                text = if(isValid) "${nicknameState.value.count()}/6" else "6/6" ,
                 color = White,
                 style = MaterialTheme.typography.subtitle2
             )
         }
     }
-}
-
-@Composable
-fun MakeNicknameNavIcon(onNavIconClick: () -> Boolean){
-    Image(
-        painter = painterResource(id = R.drawable.ic_back),
-        contentDescription = stringResource(id = R.string.nickname_make_go_back),
-        modifier = Modifier
-            .clickable {
-                onNavIconClick()
-            }
-            .padding(16.dp, 0.dp, 0.dp, 0.dp)
-    )
 }
 
 @Composable
