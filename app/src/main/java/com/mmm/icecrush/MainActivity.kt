@@ -17,6 +17,7 @@ import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.makenickname.MakeNickname
 import com.mmm.icecrush.ui.wait.WaitRoom
 import com.mmm.icecrush.ui.theme.IceCrushTheme
+import com.mmm.icecrush.ui.wait.Room
 import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalFoundationApi
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
                         composable(Destinations.WaitRoom) { WaitRoom(navController = navController, list = listOf("1","2"))}
                         composable(Destinations.Invitation){ Invitation(navController) }
                         composable(Destinations.MakeNickname){ MakeNickname(navController = navController)}
+                        composable(Destinations.Room){ Room(navController) }
                     }
                 }
             }

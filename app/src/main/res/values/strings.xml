@@ -34,4 +34,6 @@
     <string name="nickname_make_hint">닉네임을 입력해주세요.</string>
 
     <string name="start">시작하기</string>
+
+    <string name="exit">나가기</string>
 </resources>

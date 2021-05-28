@@ -61,12 +61,6 @@ import com.mmm.icecrush.ui.theme.White
 @Composable
 fun WaitRoom(navController: NavController, list: List<String>) {
 
-    val systemUiController = rememberSystemUiController()
-
-    SideEffect {
-        systemUiController.setStatusBarColor(Red)
-    }
-
     Scaffold(
         topBar = {
             TopAppBar(

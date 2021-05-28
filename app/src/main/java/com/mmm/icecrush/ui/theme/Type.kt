@@ -43,6 +43,12 @@ val Typography = Typography(
         fontSize = 20.sp
 
     ),
+    button = TextStyle(
+        fontFamily = FontFamily(gMarketSansMedium),
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp
+
+    ),
     caption = TextStyle(
         fontFamily = FontFamily(gMarketSansMedium),
         fontWeight = FontWeight.Medium,
