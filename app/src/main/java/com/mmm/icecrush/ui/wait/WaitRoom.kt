@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.navigationBarsPadding
 import com.mmm.icecrush.Destinations
@@ -118,7 +119,7 @@ fun WaitRoom(navController: NavController, list: List<String>) {
 
                 Button(
                     onClick = {
-
+                        navController.navigate(Destinations.Room)
                     },
                     colors = buttonColors(
                         backgroundColor = Black,

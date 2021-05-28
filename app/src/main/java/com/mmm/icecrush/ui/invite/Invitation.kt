@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -20,6 +21,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.insets.navigationBarsPadding
 import com.mmm.icecrush.Destinations
 import com.mmm.icecrush.R
 import com.mmm.icecrush.ui.theme.Black
@@ -36,6 +38,7 @@ fun Invitation(
     val scope = rememberCoroutineScope()
 
     Scaffold(
+        modifier = Modifier.navigationBarsPadding(),
         scaffoldState = scaffoldState,
         topBar = { InvitationAppBar(onNavigationClick = { navController.popBackStack() }) },
         backgroundColor = Red
@@ -66,7 +69,7 @@ fun Invitation(
                 color = White,
             )
             Button(
-                onClick = { } ,
+                onClick = { },
                 modifier = Modifier.constrainAs(shareButton) {
                     top.linkTo(title.bottom, 28.dp)
                     centerHorizontallyTo(parent)
@@ -77,7 +80,12 @@ fun Invitation(
                         contentColor = Black
                     ),
                 shape = RoundedCornerShape(24.dp),
-                contentPadding = PaddingValues(start = 20.dp, top = 13.dp, end = 20.dp, bottom = 13.dp)
+                contentPadding = PaddingValues(
+                    start = 20.dp,
+                    top = 13.dp,
+                    end = 20.dp,
+                    bottom = 13.dp
+                )
             ) {
                 Text(
                     text = stringResource(id = R.string.invite_share),

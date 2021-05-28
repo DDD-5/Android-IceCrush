@@ -17,7 +17,7 @@ fun AppContent(){
         systemUiController.setStatusBarColor(
             color = when (navController.currentDestination?.displayName) {
                 Destinations.Lobby, Destinations.CreateRoom -> Blue
-                Destinations.Invitation -> Red
+                Destinations.Invitation, Destinations.Room, Destinations.WaitRoom -> Red
                 else -> Blue
             }
         )
