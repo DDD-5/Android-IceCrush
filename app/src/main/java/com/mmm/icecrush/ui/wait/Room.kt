@@ -196,7 +196,8 @@ fun Room(navController: NavController) {
                             contentColor = White,
                             disabledContentColor = Disable
                         ),
-                        modifier = Modifier.weight(0.4f)
+                        modifier = Modifier.weight(0.4f),
+                        enabled = false
                     ) {
                         Text(
                             text = stringResource(id = R.string.complete_response),
