@@ -7,4 +7,5 @@ object Destinations {
     const val WaitRoom = "wait"
     const val MakeNickname = "makeNickname"
     const val Room = "room"
+    const val Finish = "finish"
 }

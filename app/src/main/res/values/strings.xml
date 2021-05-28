@@ -35,10 +35,15 @@
 
     <string name="start">시작하기</string>
 
-
     <!--  room  -->
     <string name="speaker">speaker</string>
     <string name="exit">나가기</string>
     <string name="skip">이번 질문 스킵</string>
     <string name="complete_response">대답 완료</string>
+
+    <!--  finish  -->
+    <string name="finish">미팅 종료</string>
+    <string name="finish_title">Congrats!</string>
+    <string name="finish_summary_title">방 Summary</string>
+    <string name="finish_summary_content">- 방 운영 시간\n- 대답한 질문 갯수\n- 참여한 인원</string>
 </resources>
