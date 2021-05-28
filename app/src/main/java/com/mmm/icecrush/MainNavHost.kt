@@ -27,6 +27,10 @@ fun MainNavHost() {
         composable(Destinations.MakeNickname){
 
         }
+
+        composable(Destinations.Finish){
+
+        }
     }
 
 

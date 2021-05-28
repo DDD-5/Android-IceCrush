@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.statusBarsPadding
 import com.mmm.icecrush.ui.create.CreateRoom
+import com.mmm.icecrush.ui.finish.Finish
 import com.mmm.icecrush.ui.invite.Invitation
 import com.mmm.icecrush.ui.lobby.Lobby
 import com.mmm.icecrush.ui.makenickname.MakeNickname
@@ -41,10 +42,10 @@ class MainActivity : ComponentActivity() {
                         composable(Destinations.WaitRoom) { WaitRoom(navController = navController, list = listOf("1","2"))}
                         composable(Destinations.MakeNickname){ MakeNickname(navController = navController)}
                         composable(Destinations.Room){ Room(navController) }
+                        composable(Destinations.Finish){ Finish(navController)}
                     }
                 }
             }
-//            AppContent()
         }
     }
 }
